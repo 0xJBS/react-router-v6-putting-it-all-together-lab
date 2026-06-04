@@ -11,7 +11,7 @@ function MovieForm() {
   const { director, onUpdateDirector } = useOutletContext()
   const navigate = useNavigate()
   
-  if (!director) { return <h2>Director not found.</h2>}
+  if (!director) { return <h2>Director not found.</h2> }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -27,7 +27,7 @@ function MovieForm() {
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({movies: [...director.movies, newMovie]})
+      body: JSON.stringify({ movies: [...director.movies, newMovie] })
     })
     .then(r => {
       if (!r.ok) { throw new Error("failed to add movie") }

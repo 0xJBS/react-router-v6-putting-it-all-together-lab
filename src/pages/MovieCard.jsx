@@ -12,8 +12,8 @@ function MovieCard() {
   return (
     <div>
       <h2>{movie.title}</h2>
-      <p>⏱️ Duration: {movie.time} minutes</p>
-      <p>🎬 Genres: {movie.genres.join(", ")}</p>
+      <p>Duration: {movie.time} minutes</p>
+      <p>Genres: {movie.genres.join(", ")}</p>
     </div>
   )
 }

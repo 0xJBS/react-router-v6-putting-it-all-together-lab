@@ -13,7 +13,7 @@ const DirectorList = () => {
         <ul>
             {displayDirectors}
         </ul>
-    );
+    )
 }
 
-export default DirectorList;
+export default DirectorList

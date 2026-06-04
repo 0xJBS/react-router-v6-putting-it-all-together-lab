@@ -4,7 +4,6 @@ function DirectorCard() {
     const { id } = useParams()
     const { directors, onUpdateDirector } = useOutletContext()
 
-    // Defensive lookup logic handling mixed number/string variations safely
     const director = directors.find(d => d.id.toString() === id?.toString())
 
     if (!director) {
@@ -25,7 +24,6 @@ function DirectorCard() {
             </ul>
             <Link to={`movies/new`}>Add New Movie</Link>
             
-            {/* Essential layout hub for downstream MovieForm and MovieCard routing paths */}
             <Outlet context={{ director, onUpdateDirector }} />
         </div>
     )

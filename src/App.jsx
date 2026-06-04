@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from "./pages/Home"
 import About from "./pages/About"
 import DirectorContainer from "./pages/DirectorContainer"
@@ -10,21 +10,21 @@ import MovieCard from "./pages/MovieCard"
 
 const App = () => {
     return (
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            
-            {/* Nested Director Routing */}
-            <Route path="/directors" element={<DirectorContainer />}>
-                <Route index element={<DirectorList />} />
-                <Route path="new" element={<DirectorForm />} />
-                <Route path=":id" element={<DirectorCard />}>
-                    {/* Nested Movie Routing under active Director */}
-                    <Route path="movies/new" element={<MovieForm />} />
-                    <Route path="movies/:movieId" element={<MovieCard />} />
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                
+                <Route path="/directors" element={<DirectorContainer />}>
+                    <Route index element={<DirectorList />} />
+                    <Route path="new" element={<DirectorForm />} />
+                    <Route path=":id" element={<DirectorCard />}>
+                        <Route path="movies/new" element={<MovieForm />} />
+                        <Route path="movies/:movieId" element={<MovieCard />} />
+                    </Route>
                 </Route>
-            </Route>
-        </Routes>
+            </Routes>
+        </BrowserRouter>
     )
 }
 
