@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 
 const DirectorContainer = () => {
@@ -14,12 +15,23 @@ const DirectorContainer = () => {
         .catch(console.log)
     }, [])
 
+    const handleAddDirector = (newDirector) => {
+        setDirectors((prev) => [...prev, newDirector])
+    }
+
+    const handleUpdateDirector = (updatedDirector) => {
+        setDirectors((prev) =>
+            prev.map((d) => (d.id.toString() === updatedDirector.id.toString() ? updatedDirector : d))
+        )
+    }
+
     return (
         <>
             <NavBar />
             <main>
                 <h1>Welcome to the Director's Directory!</h1>
-                {/* all director components should render here depending on route */}
+                {/* Dynamically serves content based on the sub-route matched */}
+                <Outlet context={{ directors, onAddDirector: handleAddDirector, onUpdateDirector: handleUpdateDirector }} />
             </main>
         </>
     );
